@@ -1,37 +1,31 @@
 <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav" id="sidebar-nav">
 
+    <li class="nav-item">
+      <a class="nav-link <?php echo (uri_string() == '') ? "" : "collapsed" ?>" href="<?= site_url('/') ?>">
+        <i class="bi bi-grid"></i>
+        <span>Home</span>
+      </a>
+    </li><!-- End Home Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link <?php echo (uri_string() == 'keranjang') ? "" : "collapsed" ?>" href="<?= site_url('keranjang') ?>">
+        <i class="bi bi-cart-check"></i>
+        <span>Keranjang</span>
+      </a>
+    </li><!-- End Keranjang Nav -->
+
+    <?php if (session()->get('role') == 'admin') { ?>
       <li class="nav-item">
-        <a class="nav-link <?php echo (uri_string() == '') ? "" : "collapsed" ?>" href="/">
-          <i class="bi bi-grid"></i>
-          <span>Home</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link <?php echo (uri_string() == 'keranjang') ? "" : "collapsed" ?>" href="keranjang">
-          <i class="bi bi-cart-check"></i>
-          <span>Keranjang</span>
-        </a>
-      </li><!-- End keranjang Nav -->
-
-      <?php
-      if (session()->get('role') == 'admin') {
-      ?>
-      <!-- munculkan menu produk -->    
-      <?php
-      }
-      ?>
-
-      <li class="nav-item">
-        <a class="nav-link <?php echo (uri_string() == 'produk') ? "" : "collapsed" ?>" href="produk">
+        <a class="nav-link <?php echo (uri_string() == 'produk') ? "" : "collapsed" ?>" href="<?= site_url('produk') ?>">
           <i class="bi bi-receipt"></i>
           <span>Produk</span>
         </a>
-      </li><!-- End produk Nav -->
+      </li><!-- End Produk Nav -->
+    <?php } ?>
 
-    </ul>
+  </ul>
 
-  </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar-->
